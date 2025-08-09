@@ -280,64 +280,67 @@ while (run) {
                 <!--page13-->
                 <section>
                     <h4>opcode examples</h4>
-                    <ul>
-                        <li class="fragment">1000 1XXX (Intel 8080 instruction)</li>
-                        <ul class="fragment">
-                            <li>1000 1XXX → add REG</li>
-                            <li>1 byte instruction</li>
-                            <li>XXX is a 3 bit reg code</li>
-                            <li>
-                                function : adds a general purpose registrator to
-                                accumulator (special register)
-                            </li>
-                            <li>eg; ADD B : 10001000</li>
-                            <table class="fragment">
-                                <thead>
-                                    <tr>
-                                        <th>XXX</th>
-                                        <th>Register</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>000</td>
-                                        <td>B</td>
-                                    </tr>
-                                    <tr>
-                                        <td>001</td>
-                                        <td>C</td>
-                                    </tr>
-                                    <tr>
-                                        <td>010</td>
-                                        <td>D</td>
-                                    </tr>
-                                    <tr>
-                                        <td>011</td>
-                                        <td>E</td>
-                                    </tr>
-                                    <tr>
-                                        <td>100</td>
-                                        <td>H</td>
-                                    </tr>
-                                    <tr>
-                                        <td>101</td>
-                                        <td>L</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </ul>
-                    </ul>
 
-                    <ul>
-                        <li class="fragment">SUBQ.B # data, Dn</li>
-                        <ul class="fragment">
-                            <li>It stands for substract quick</li>
-                            <li>
-                                It substracts a small number (1-8) from a data
-                                register
-                            </li>
+                    <div>
+                        <ul>
+                            <li class="fragment">1000 1XXX (Intel 8080 instruction)</li>
+                            <ul class="fragment">
+                                <li>1000 1XXX → add REG</li>
+                                <li>1 byte instruction</li>
+                                <li>XXX is a 3 bit reg code</li>
+                                <li>
+                                    function : adds a general purpose registrator to
+                                    accumulator (special register)
+                                </li>
+                                <li>eg; ADD B : 10001000</li>
+                                <table class="fragment">
+                                    <thead>
+                                        <tr>
+                                            <th>XXX</th>
+                                            <th>Register</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>000</td>
+                                            <td>B</td>
+                                        </tr>
+                                        <tr>
+                                            <td>001</td>
+                                            <td>C</td>
+                                        </tr>
+                                        <tr>
+                                            <td>010</td>
+                                            <td>D</td>
+                                        </tr>
+                                        <tr>
+                                            <td>011</td>
+                                            <td>E</td>
+                                        </tr>
+                                        <tr>
+                                            <td>100</td>
+                                            <td>H</td>
+                                        </tr>
+                                        <tr>
+                                            <td>101</td>
+                                            <td>L</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </ul>
                         </ul>
-                    </ul>
+
+                        <ul>
+                            <li class="fragment">SUBQ.B # data, Dn</li>
+                            <ul class="fragment">
+                                <li>It stands for substract quick</li>
+                                <li>
+                                    It substracts a small number (1-8) from a data
+                                    register
+                                </li>
+                            </ul>
+                        </ul>
+                    </div>
                 </section>
 
                 <section>
