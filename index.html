@@ -138,14 +138,15 @@
                   </ul>
                  </div>
 
-                 <div style="flex: 1;" class="fragment">
-                  <h2 style="color: #d9534f; font-size: 2em; font-weight: bold; margin-bottom: 1rem;">
+                 <div style="flex: 1;" >
+                  <h2 class="fragment" style="color: #d9534f; font-size: 2em; font-weight: bold; margin-bottom: 1rem;">
                    Key Features of John GBA
                   </h2>
                   <ul style="list-style-type: disc; padding-left: 2rem;">
-                   <li style="margin-bottom: 0.75em; font-size: 1.1em;">
+                   <li class="fragment" style="margin-bottom: 0.75em; font-size: 1.1em;">
                     <strong style="color: #d9534f;">Legal</strong>
                    </li>
+                   <div class="fragment">
                    <li style="margin-bottom: 0.75em; font-size: 1.1em;">
                     Save States
                    </li>
@@ -158,6 +159,8 @@
                    <li style="margin-bottom: 0.75em; font-size: 1.1em;">
                     Cheat Codes
                    </li>
+                   </div>
+
                   </ul>
                  </div>
                 </section>
@@ -222,7 +225,12 @@ while (run) {
                     <h3>Two type of CPU emulation :</h3>
                     <ol>
                         <li class="fragment">Interpreted emulation</li>
-                        <li class="fragment">Binary translation</li>
+                        <li class="fragment">Binary translation
+                            <ul>
+                                <li>Static binary translation</li>
+                                <li>Dynamic binary translation</li>
+                            </ul>
+                        </li>
                     </ol>
                     <div class="fragment">
                         <img src="./public/images/stackques.png" style="width: 400px;" />
@@ -436,7 +444,7 @@ instruction (operands){
                             jumps because they break instruction pipelines.
                         </li>
                         <li>
-                            If your host CPU (the one running the emulator) has
+                            This won't be a problem if your host CPU (the one running the emulator) has
                             similar flags to your guest CPU (the one you're
                             emulating). eg 8080 and x86 have similar flags.
                         </li>
