@@ -365,14 +365,16 @@ typedef union
                         Using this, registers can be accessed as:
                         <li>A 32 bit value</li>
                         <li>A 16 bit value</li>
-                        <li>Two separate bytes (low and high parts)</li>
+                        <li>Two separate bytes (low and high parts).
+
+                            <span
+                                class="fragment"
+                                style="color: #ff4d4d;"
+                                >This is useful because some instructions operate on 8
+                                bit while others on 16 bit registers</
+                            ></li>
                     </ul>
 
-                    <span
-                        class="fragment"
-                        >This is useful because some instructions operate on 8
-                        bit while others on 16 bit registers</span
-                    >
                 </section>
                 <!--page15-->
                 <section>
@@ -484,35 +486,42 @@ instruction (operands){
                 </section>
                 <!--page19-->
                 <section>
-                    <h3>Modern CPUs and MMU</h3>
-                    <div>
-                        Modern CPUs have
-                        <li class="fragment">
-                            Virtual Addresses - address seen by running programs
-                        </li>
-                        <li class="fragment">Protection</li>
-                        <li class="fragment">Memory mapped devices</li>
-                    </div>
-                    <div class="fragment">They are managed by memory management unit.</div>
-                    <ul class="fragment">
-                        When emulating such CPUs, you also have to emulate the
-                        MMU, which is very slow because:
-                        <li>
-                            Every memory access may involve a translation step.
-                        </li>
-                        <li>Access rights need to be checked</li>
-                        <li>Page faults/exceptions must be handled.</li>
-                    </ul>
-                    <div class="fragment" style="margin-top: 1rem;">
-                        <strong>Translational step?</strong>
-                        CPU instruction asks for virtual address, a 'page table'
-                        finds the corresponding physical location and
-                        read/writes that physical memory
-                    </div>
+                  <h2>Modern CPUs and MMU</h2>
 
-                    <span class="fragment">Remember MMU does all this in parallel, but you can't while
-                    emulating xD</span>
+                  <div style="padding: 1rem; display: flex; flex-direction: column; align-start: center; justify-start: center;"  class="fragment">
+                    <h4 style="display: flex; align-start: center; justify-start: center;">Modern CPUs have:</h4>
+                    <ul>
+                      <li class="fragment">Virtual Addresses – seen by running programs</li>
+                      <li class="fragment">Protection</li>
+                      <li class="fragment">Memory-mapped devices</li>
+                    </ul>
+
+                    <p style="display: flex; align-start: center; justify-start: center;"  class="fragment">
+                      They are managed by the <strong style="margin-left: 0.5rem; color: #ff4d4d;">Memory Management Unit (MMU)</strong>
+                    </p>
+                  </div>
+
+                  <div style="display: flex; flex-direction: column; align-start: center; justify-start: center;" class="fragment">
+                    <span style="display: flex; align-start: center; justify-start: center;">
+                        When emulating such CPUs, you also have to emulate the MMU, which is <strong style="margin: 0rem 1rem;">slow</strong> because:
+                    </span>
+                      <ul>
+                      <li>Every memory access may involve a translation step</li>
+                      <li>Access rights need to be checked</li>
+                      <li>Page faults/exceptions must be handled</li>
+                    </ul>
+                  </div>
+
+                  <div style="display: flex; align-start: center; justify-start: center; padding-top: 3rem;"  class="fragment">
+                      <span>
+                          <span style="text-decoration: underline;">Translational step?</span><br>
+                    CPU instruction asks for a virtual address → a <em>page table</em> finds the physical location → read/write that physical memory.
+                      </span>
+                  </div>
+
+                  <p class="fragment">Remember: MMU does all this in parallel, but you can’t while emulating XD</p>
                 </section>
+
                 <!--page20-->
                 <section>
                     <h3>Interrupts</h3>
@@ -559,41 +568,26 @@ instruction (operands){
                 </section>
                 <!--page22-->
                 <section>
-                    <span>
-                        As you might have guessed, interpreted emulators are
-                        <strong> slow </strong>. I know a way to make them faster:
-                    </span>
-                    <li class="fragment">write them in assembly instead.</li>
-                    <li class="fragment">
-                        But there are some problems with that as well -
+                    <div style="display: flex; flex-direction: column; align-items: start; justify-content: start;">
+                        <span style="text-decoration: underline;">
+                            As you might have guessed, interpreted emulators are
+                            <strong style="color: #ff4d4d;"> slow </strong>. I know a way to make them faster:
+                        </span>
                         <ul>
+                            <li class="fragment">write them in assembly instead.</li>
                             <li class="fragment">
-                                The emulator is not portable without rewriting
-                                the CPU core (there is a tradeoff between
-                                portability and performance).
-                            </li>
-                            <li class="fragment">
-                                There is another implementation which tries to
-                                increase its performance - threaded emulators
-                            </li>
-                            <li class="fragment">
-                                Instead of interpreting one instruction at a
-                                time, it decodes the intruction once - stores a
-                                pointer to the code that implements it - next
-                                time when the instruction occurs, it directly
-                                jumps to the pre decoded function
-                            </li>
-                            <li class="fragment">
-                                Same problem remains it is faster, but less
-                                portable code
-                            </li>
-                            <li class="fragment">
-                                Also not all C compilers are capable of doing
-                                such a thing and need special features or the
-                                use of inline assembly to implement it
+                                But there are some problems with that as well -
+
+                                <ul class="fragment">
+                                    <li>The emulator is not portable without rewriting the CPU core (tradeoff between portability and performance).</li>
+                                    <li>Another implementation exists to increase performance — threaded emulators.</li>
+                                    <li>Instead of interpreting one instruction at a time, it decodes it once and stores a pointer for reuse.</li>
+                                    <li>Faster, but less portable code.</li>
+                                    <li>Not all C compilers can do this — some need inline assembly or special features.</li>
+                                </ul>
                             </li>
                         </ul>
-                    </li>
+                    </div>
                 </section>
                 <!--page23-->
                 <section>
@@ -618,8 +612,8 @@ instruction (operands){
                     <ul>
                         <span class="fragment">Two main types: </span>
 
-                        <ul class="fragment">
-                            <strong>Static binary translation</strong>
+                        <ul style="padding-top: 2rem;" class="fragment">
+                            <strong style="text-decoration: underline;">Static binary translation</strong>
                             <li>
                                 Translate the entire program before running it.
                             </li>
@@ -632,8 +626,8 @@ instruction (operands){
                             </li>
                         </ul>
 
-                        <ul class="fragment">
-                            <strong>Dynamic binary translation</strong>
+                        <ul style="padding-top: 2rem;" class="fragment">
+                            <strong style="text-decoration: underline;">Dynamic binary translation</strong>
                             <li>
                                 Translate instructions while the program runs
                                 (just-in-time).
