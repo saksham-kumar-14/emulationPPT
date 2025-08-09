@@ -1,0 +1,697 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Saksham's Talk</title>
+
+        <!-- Reveal.js CSS from CDN -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/blood.min.css"
+        />
+
+        <!-- Your custom styles -->
+        <link rel="stylesheet" href="./styles/main.css" />
+
+        <!-- Syntax highlighting for code blocks -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/monokai.min.css"
+        />
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <!--page1-->
+                <section>
+                    <span class="heading"
+                        >I Was Reincarnated as a 6502 CPU After Accidentally
+                        Emulating Myself</span
+                    >
+                    <span class="fragment trust-issue heading"
+                        >(Now I Have Trust Issues)</span
+                    >
+                </section>
+
+                <!--page2-->
+                <section>
+                    <span>
+                        <div>
+                            <h2>
+                            <span class="dollar">$</span>
+                            <span class="terec">hexdump -C</span>
+                            <span>What_Is_Emulation</span>
+                            </h2>
+                            <p class="fragment">
+                                The process of recreating one computer system, device, or software
+                                environment on another system
+                            </p>
+                            <ul class="intro-points">
+                                <li class="fragment">
+                                    Recreating the hardware behavior of another machine
+                                </li>
+                                <li class="fragment">
+                                    Translating instruction meant for original system into ones your
+                                    current system understands
+                                </li>
+                                <li class="fragment">
+                                    Lets softwares (eg, games, operating systems) run as if they were
+                                    on their native platform
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <img class="fragment" src="./public/images/myconsole.png" style="height: 400px" />
+                            <img
+                                class="fragment"
+                                src="public/images/whyiemulate.png"
+                                alt="whyiemulate"
+                                style="height: 400px; margin-left: 20rem;"
+                            />
+                        </div>
+                    </span>
+                </section>
+
+                <!--page4-->
+                <section>
+                    <span class="heading"
+                        >? How is Emulation different from Simulation</span
+                    >
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="fragment fade-in">
+                                <td><strong>Emulator</strong></td>
+                                <td>
+                                    Mimics the actual hardware behavior. High
+                                    accuracy.
+                                </td>
+                                <td>QEMU</td>
+                            </tr>
+                            <tr class="fragment fade-in">
+                                <td><strong>Simulator</strong></td>
+                                <td>
+                                    Models behavior or logic, not necessarily
+                                    the hardware. Approximate accuracy.
+                                </td>
+                                <td>Shark Survival Simulator</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <!--page5-->
+                <section
+                 style="
+                   display: flex;
+                   gap: 3rem;
+                   padding: 2rem;
+                 "
+                >
+                 <div style="flex: 1;" class="fragment">
+                  <h2 style="color: #d9534f; font-size: 2em; font-weight: bold; margin-bottom: 1rem;">
+                   My First Emulator
+                  </h2>
+                  <ul style="list-style-type: disc; padding-left: 2rem;">
+                   <li style="margin-bottom: 1em; font-size: 1.1em;">
+                    First emulator: <strong>John GBA</strong> (Android)
+                   </li>
+                   <li style="margin-bottom: 1em; font-size: 1.1em;">
+                    Played <span style="color: #d9534f;">Pokémon Emerald</span> extensively.
+                   </li>
+                   <li style="margin-bottom: 1em; font-size: 1.1em;">
+                    Over-leveled <span style="color: #d9534f;">Swampert</span> (Level 90+).
+                   </li>
+                   <li style="margin-bottom: 1em; font-size: 1.1em;">
+                    Could defeat Ice-types with just Muddy Water!
+                   </li>
+                  </ul>
+                 </div>
+
+                 <div style="flex: 1;" class="fragment">
+                  <h2 style="color: #d9534f; font-size: 2em; font-weight: bold; margin-bottom: 1rem;">
+                   Key Features of John GBA
+                  </h2>
+                  <ul style="list-style-type: disc; padding-left: 2rem;">
+                   <li style="margin-bottom: 0.75em; font-size: 1.1em;">
+                    <strong style="color: #d9534f;">Legal</strong>
+                   </li>
+                   <li style="margin-bottom: 0.75em; font-size: 1.1em;">
+                    Save States
+                   </li>
+                   <li style="margin-bottom: 0.75em; font-size: 1.1em;">
+                    Fast Forward
+                   </li>
+                   <li style="margin-bottom: 0.75em; font-size: 1.1em;">
+                    Dropbox Sync
+                   </li>
+                   <li style="margin-bottom: 0.75em; font-size: 1.1em;">
+                    Cheat Codes
+                   </li>
+                  </ul>
+                 </div>
+                </section>
+
+                <!--page8-->
+                <section>
+                    <h3>How to emulate?</h3>
+                    <ul>
+                        <li>
+                            An emulator has to be designed taking in accounts
+                            for the internal architecture of the computer.
+                        </li>
+                        <li>
+                            All modern computers are based on von neumann
+                            architectures, i.e., a bus connected to CPU, memory
+                            and other devices. A bus is bunch of electric line
+                            that help in connecting.
+                        </li>
+                        <img
+                            src="public/images/voneuman.png"
+                            alt="whyiemulate"
+                            style="width: 350px"
+                        />
+                    </ul>
+                </section>
+                <!--page9-->
+                <section>
+                    <h3>CPU emulation</h3>
+                    <ul>
+                        <li>
+                            A big problem is the CPUs, memory devices, sound
+                            devices, etc. all work in parallel, but almost all
+                            emulators use to be implemented for monoprocessor
+                            machines so devices cannot be emulated in parallel.
+                        </li>
+<pre><code class="language-cpp" style="font-size: 1rem; line-height: 1.2rem;">
+// Fetch-decode-execute loop
+while (run) {
+    executeCPU(cycles_to_execute);   // Simulated CPU: fetch, decode, execute
+    generateInterrupts();            // Simulate hardware interrupts
+    emulateGraphics();               // Simulate graphics processor
+    emulateSound();                  // Simulate sound hardware
+    emulateOtherSoftware();          // Simulate other software
+    timeSynchronization();          // Keep emulator speed real-time
+}
+</code></pre>
+                        <li class="fragment">
+                            The CPU is the core of the emulation and it is used
+                            to mark the time of the emulation. Many computers
+                            have hardware which introduce time into their system
+                            (for example timers and interrupts driven by
+                            timers), but the main method to know about the time
+                            in a computer is the same executed instruction time
+                            in the CPU (counting the CPU cycles). That is the
+                            way the emulator main loop takes into account the
+                            time.
+                        </li>
+                    </ul>
+                </section>
+                <!--page10-->
+                <section>
+                    <h3>Two type of CPU emulation :</h3>
+                    <ol>
+                        <li class="fragment">Interpreted emulation</li>
+                        <li class="fragment">Binary translation</li>
+                    </ol>
+                    <div class="fragment">
+                        <img src="./public/images/stackques.png" style="width: 400px;" />
+                        <img src="./public/images/stackans.png" style="width: 400px;" />
+                    </div>
+                    <a class="fragment" target="_blank" href="https://stackoverflow.com/questions/16724593/why-is-dynamic-binary-translation-more-practical-than-static-binary-translation">Link to the question</a>
+                </section>
+                <!--page11-->
+                <section>
+                    <ul>
+                        <h2>interpreted emulation</h2>
+                        <li class="fragment">
+                            In interpreted emulation we get the intruction codes
+                            - decode what they mean - and execute the function
+                            of the decoded instruction.
+                        </li>
+                        <li class="fragment">
+                            A basic CPU reads bytes from an address of the
+                            memory pointed by a special register (PC or Program
+                            Counter).
+                        </li>
+                        <li class="fragment">
+                            The more basic CPUs (and also Virtual Machines like
+                            Java), have at least two registers, the PC and the
+                            SP.
+                        </li>
+                    </ul>
+                </section>
+                <!--page12-->
+                <section>
+                    <h3>fetch decode loop</h3>
+                    <ul>
+                        <li class="fragment">
+                            Gets a byte for some bytes from memory which are
+                            located in a position pointed by a special register
+                            (PC).
+                        </li>
+                        <li class="fragment">
+                            The SP, or Stack Pointer, is a pointer to the
+                            memory. It is used to keep a stack data structure,
+                            that is, a FIFO (First In First Out) structure which
+                            is useful for retrieving the last data added to the
+                            structure. The SP is decremented and incremented as
+                            new values are pushed or popped to the stack.
+                        </li>
+                        <li class="fragment">
+                            Those CPUs, called stack machines
+                        </li>
+                        <li class="fragment">
+                            Byte or group of bytes which define a single
+                            instruction are called <strong>opcodes</strong>
+                        </li>
+                    </ul>
+                </section>
+                <!--page13-->
+                <section>
+                    <h4>opcode examples</h4>
+                    <ul>
+                        <li class="fragment">1000 1XXX (Intel 8080 instruction)</li>
+                        <ul class="fragment">
+                            <li>1000 1XXX → add REG</li>
+                            <li>1 byte instruction</li>
+                            <li>XXX is a 3 bit reg code</li>
+                            <li>
+                                function : adds a general purpose registrator to
+                                accumulator (special register)
+                            </li>
+                            <li>eg; ADD B : 10001000</li>
+                            <table class="fragment">
+                                <thead>
+                                    <tr>
+                                        <th>XXX</th>
+                                        <th>Register</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>000</td>
+                                        <td>B</td>
+                                    </tr>
+                                    <tr>
+                                        <td>001</td>
+                                        <td>C</td>
+                                    </tr>
+                                    <tr>
+                                        <td>010</td>
+                                        <td>D</td>
+                                    </tr>
+                                    <tr>
+                                        <td>011</td>
+                                        <td>E</td>
+                                    </tr>
+                                    <tr>
+                                        <td>100</td>
+                                        <td>H</td>
+                                    </tr>
+                                    <tr>
+                                        <td>101</td>
+                                        <td>L</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </ul>
+                    </ul>
+
+                    <ul>
+                        <li class="fragment">SUBQ.B # data, Dn</li>
+                        <ul class="fragment">
+                            <li>It stands for substract quick</li>
+                            <li>
+                                It substracts a small number (1-8) from a data
+                                register
+                            </li>
+                        </ul>
+                    </ul>
+                </section>
+
+                <section>
+                    <h4>
+                        C trick in emulators to access the same register data in
+                        multiple ways
+                    </h4>
+                    <pre><code class="language-cpp" style="font-size: 1rem; line-height: 1.2rem;">
+typedef union
+{
+    UINT32 w;   /* Access it as a 32-bit value (maybe for full register set) */
+    UINT16 w;   /* Access it as a 16-bit value */
+    struct
+    {
+        UINT8 l, h;  /* Low and High byte parts */
+        UINT16 pad;  /* Padding for little-endian alignment */
+    } b;       /* Access as two bytes */
+} i8080Reg;
+                    </code></pre>
+
+                    <ul class="fragment">
+                        Using this, registers can be accessed as:
+                        <li>A 32 bit value</li>
+                        <li>A 16 bit value</li>
+                        <li>Two separate bytes (low and high parts)</li>
+                    </ul>
+
+                    <span
+                        class="fragment"
+                        >This is useful because some instructions operate on 8
+                        bit while others on 16 bit registers</span
+                    >
+                </section>
+                <!--page15-->
+                <section>
+                    <h3>Instruction Emulation</h3>
+                    <li class="fragment">
+                        Here we need to take ISA (Instruction set architecture)
+                        of CPU, and reproduce in the language we are
+                        implementing the algorithm in
+                    </li>
+                    <pre><code class="language-cpp fragment" style="font-size: 1rem; line-height: 1.2rem;">
+instruction (operands){
+    get_operands;
+    perform_calculations;
+    store_result;
+    update_time;
+    return to the main loop / fetch next opcode;
+}
+                    </code></pre>
+                    <img class="fragment" src="public/images/docsrant.png" style="width: 300px;" />
+                </section>
+                <!--page16-->
+                <section>
+                    <h3>Flags</h3>
+                    <ul class="fragment">
+                        <li>
+                            One of the harder takes to emuate using a high level
+                            language
+                        </li>
+                        <li>
+                            In most CPUs, the result of an operation (like ADD,
+                            SUB, AND, etc.) isn't just the number you get — the
+                            CPU also updates a set of flags that describe
+                            properties of the result.
+                        </li>
+                        <li>
+                            Flags are single bit variables or registers which
+                            are set after some arithmetic or logic instructions.
+                            Common in 8 bit and 16 bit CPU, also in many modern
+                            COPU (like, x86).
+                        </li>
+                        <li>
+                            This is because most of the times a single
+                            instruction changes more than one flag, so, it
+                            becomes harder to handle.
+                        </li>
+                        <li>
+                            Some examples of flags are carry, zero, sign flag,
+                            etc.
+                        </li>
+                        <li>
+                            Emulating flags is quite expensive because you're
+                            replicating hardware's parallel work in sequential
+                            software.
+                        </li>
+                        <li>
+                            You often end up with multiple if statements per
+                            flag. ach if can become a branch/jump in the
+                            compiled code — and modern CPUs hate unpredictable
+                            jumps because they break instruction pipelines.
+                        </li>
+                        <li>
+                            If your host CPU (the one running the emulator) has
+                            similar flags to your guest CPU (the one you're
+                            emulating). eg 8080 and x86 have similar flags.
+                        </li>
+                    </ul>
+                </section>
+                <!--page17-->
+                <section>
+                    <h2>Memory</h2>
+                    <ul>
+                        <h4 >Memory emulation can be slow because</h4>
+                        <li class="fragment">
+                            Memory access is extremely common. Every instruction
+                            needs to fetch its code, and many need to read/write
+                            data
+                        </li>
+                        <li class="fragment">
+                            The access logic is complex. In software, the
+                            emulator must check every time what kind of memory
+                            is being accessed. Some addresses points to ROM, I/O
+                            registers, some are special banks that map to
+                            different physical pages at different times
+                        </li>
+                        <li class="fragment">
+                            This may involve scanning lists, calling functions,
+                            handling bank switching, and simulating MMU
+                            behavior.
+                        </li>
+                    </ul>
+                </section>
+                <!--page18-->
+                <section>
+                    <h2>Other performance concerns</h2>
+                    <ol>
+                        <li class="fragment">
+                            <strong>Alignment Checks - </strong> Some CPUs
+                            forbid multi-byte reads/writes to unaligned
+                            addresses (e.g., reading a 32-bit word from address
+                            0x0001). You must check and raise that exception
+                        </li>
+                        <li class="fragment">
+                            <strong>Endianness conversion - </strong> If the
+                            emulated CPU uses a different byte order (big-endian
+                            vs. little-endian) than the host then every
+                            multi-byte read/write needs byte swapping
+                        </li>
+                    </ol>
+                </section>
+                <!--page19-->
+                <section>
+                    <h3>Modern CPUs and MMU</h3>
+                    <div>
+                        Modern CPUs have
+                        <li class="fragment">
+                            Virtual Addresses - address seen by running programs
+                        </li>
+                        <li class="fragment">Protection</li>
+                        <li class="fragment">Memory mapped devices</li>
+                    </div>
+                    <div class="fragment">They are managed by memory management unit.</div>
+                    <ul class="fragment">
+                        When emulating such CPUs, you also have to emulate the
+                        MMU, which is very slow because:
+                        <li>
+                            Every memory access may involve a translation step.
+                        </li>
+                        <li>Access rights need to be checked</li>
+                        <li>Page faults/exceptions must be handled.</li>
+                    </ul>
+                    <div class="fragment" style="margin-top: 1rem;">
+                        <strong>Translational step?</strong>
+                        CPU instruction asks for virtual address, a 'page table'
+                        finds the corresponding physical location and
+                        read/writes that physical memory
+                    </div>
+
+                    <span class="fragment">Remember MMU does all this in parallel, but you can't while
+                    emulating xD</span>
+                </section>
+                <!--page20-->
+                <section>
+                    <h3>Interrupts</h3>
+                    <ul>
+                        Both interrupts and exceptions temporarily stop what the
+                        CPU is currently doing so it can run special code to
+                        handle an event
+                        <li class="fragment">
+                            Hardware interrupts Generated by hardware outside
+                            the CPU (e.g., keyboard, timer, network card) and
+                            sends to the CPU through dedicated pins on the
+                            control bus.
+                        </li>
+                        <li class="fragment">
+                            Exceptions are generated inside the CPU when it
+                            detects a problem during instruction execution. eg,
+                            divide by zero, illegal opcode
+                        </li>
+                    </ul>
+                </section>
+                <!--page21-->
+                <section>
+                    <h3>How interruption is handled?</h3>
+                    <ol>
+                        <li class="fragment">
+                            Stop execution at the current PC (Program Counter).
+                        </li>
+                        <li class="fragment">
+                            Save PC and sometimes other CPU state (registers,
+                            flags) in memory or special registers.
+                        </li>
+                        <li class="fragment">
+                            Jump to the interrupt handler (special code that
+                            deals with the event).
+                        </li class="fragment">
+                        <li class="fragment">
+                            When handler finishes:
+                            <ul>
+                                <li>Restore saved state.</li>
+                                <li>Resume execution from where it stopped.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </section>
+                <!--page22-->
+                <section>
+                    <span>
+                        As you might have guessed, interpreted emulators are
+                        <strong> slow </strong>. I know a way to make them faster:
+                    </span>
+                    <li class="fragment">write them in assembly instead.</li>
+                    <li class="fragment">
+                        But there are some problems with that as well -
+                        <ul>
+                            <li class="fragment">
+                                The emulator is not portable without rewriting
+                                the CPU core (there is a tradeoff between
+                                portability and performance).
+                            </li>
+                            <li class="fragment">
+                                There is another implementation which tries to
+                                increase its performance - threaded emulators
+                            </li>
+                            <li class="fragment">
+                                Instead of interpreting one instruction at a
+                                time, it decodes the intruction once - stores a
+                                pointer to the code that implements it - next
+                                time when the instruction occurs, it directly
+                                jumps to the pre decoded function
+                            </li>
+                            <li class="fragment">
+                                Same problem remains it is faster, but less
+                                portable code
+                            </li>
+                            <li class="fragment">
+                                Also not all C compilers are capable of doing
+                                such a thing and need special features or the
+                                use of inline assembly to implement it
+                            </li>
+                        </ul>
+                    </li>
+                </section>
+                <!--page23-->
+                <section>
+                    <h2>Binary translation</h2>
+                    <span class="fragment"
+                        >Interpreters reads on instruction decodes it, and
+                        executes. While, binary translation converts blocks of
+                        instructions into native code, then runs them
+                        directly.</span
+                    >
+                    <ul>
+                        <li class="fragment">
+                            Runs software compiled for one CPU on another
+                            without needing source code.
+                        </li>
+                        <li class="fragment">
+                            Speeds up emulation compared to interpreting
+                            instructions one-by-one.
+                        </li>
+                    </ul>
+
+                    <ul>
+                        <span class="fragment">Two main types: </span>
+
+                        <ul class="fragment">
+                            <strong>Static binary translation</strong>
+                            <li>
+                                Translate the entire program before running it.
+                            </li>
+                            <li>
+                                Like translating a whole book before reading.
+                            </li>
+                            <li>
+                                Can be faster because translation is done once,
+                                but harder with complex or self-modifying code.
+                            </li>
+                        </ul>
+
+                        <ul class="fragment">
+                            <strong>Dynamic binary translation</strong>
+                            <li>
+                                Translate instructions while the program runs
+                                (just-in-time).
+                            </li>
+                            <li>
+                                Like translating a speech as it happens. More
+                                flexible, adapts to dynamic code, but adds
+                                overhead during execution.
+                            </li>
+                        </ul>
+                    </ul>
+
+                    <span
+                        class="fragment"
+                        >QEMU uses dynamic binary translation to run ARM code on
+                        x86 machines.</span
+                    >
+                </section>
+
+                <section>
+                    <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                    <h1>ありがとう</h1>
+                    <p>Made with ❤️ by Saksham</p>
+                    <a
+                        target="_blank"
+                        href="https://github.com/saksham-kumar-14"
+                        >Github</a
+                    >
+
+                    <div style="margin-top: 2rem; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                    <p>Checkout my other handles at:</p>
+                    <img
+                        src="public/images/qr.png"
+                        alt="QR"
+                        style="width: 200px"
+                    />
+                    </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Reveal.js JavaScript from CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
+
+        <!-- Plugins from CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/notes/notes.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/markdown/markdown.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
+
+        <script>
+            Reveal.initialize({
+                hash: true,
+                controls: true,
+                progress: true,
+                center: true,
+                transition: "slide",
+
+                // Optional plugins
+                plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+            });
+        </script>
+    </body>
+</html>
