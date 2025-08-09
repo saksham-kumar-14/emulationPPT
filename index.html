@@ -602,14 +602,14 @@ instruction (operands){
                     <h2>Binary translation</h2>
                     <span class="fragment"
                         >Interpreters reads on instruction decodes it, and
-                        executes. While, binary translation converts blocks of
-                        instructions into native code, then runs them
-                        directly.</span
+                        executes. While, Binary translation is the act of converting the guest machine code into equivalent host machine code, so the host can run it directly.</span
                     >
                     <ul>
                         <li class="fragment">
-                            Runs software compiled for one CPU on another
-                            without needing source code.
+                            Translates small blocks while running, caches them, and reuses them if needed.
+                        </li>
+                        <li class="fragment">
+                            Only translates code that actually executes.
                         </li>
                         <li class="fragment">
                             Speeds up emulation compared to interpreting
@@ -658,12 +658,12 @@ instruction (operands){
                 <section>
                     <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
                     <h1>ありがとう</h1>
-                    <p>Made with ❤️ by Saksham</p>
-                    <a
+                    <p>Made with ❤️ by <a
                         target="_blank"
                         href="https://github.com/saksham-kumar-14"
-                        >Github</a
-                    >
+                        >Saksham</a
+                    ></p>
+
 
                     <div style="margin-top: 2rem; display: flex; align-items: center; justify-content: center; flex-direction: column;">
                     <p>Checkout my other handles at:</p>
