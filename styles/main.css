@@ -1,0 +1,117 @@
+/* General Slide Styling */
+.reveal {
+    font-family: "Fira Sans", "Segoe UI", sans-serif;
+    font-size: 1.15rem;
+    letter-spacing: 0.3px;
+    color: #f5f5f5;
+}
+
+/* Headings */
+.heading {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ff4d4d;
+    margin-bottom: 0.8em;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4 {
+    font-weight: 700;
+    color: #ff4d4d;
+    margin-bottom: 0.4em;
+}
+
+/* Lists */
+.reveal ul,
+.reveal ol {
+    margin: 0.5em 0;
+}
+
+.reveal li {
+    margin: 0.3em 0;
+    line-height: 1.4em;
+}
+
+/* Tables */
+.reveal table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1em;
+}
+
+.reveal th,
+.reveal td {
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 0.4em 0.6em;
+    text-align: left;
+}
+
+.reveal th {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ff8080;
+}
+
+/* Code Blocks */
+.reveal pre {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 0.8em;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    line-height: 1.3em;
+    overflow-x: auto;
+}
+
+.reveal code {
+    font-family: "Fira Code", monospace;
+}
+
+/* Images */
+.reveal img {
+    border-radius: 8px;
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.4);
+}
+
+/* Dollar terminal style */
+.dollar {
+    color: #6eff6e;
+    font-weight: bold;
+}
+
+.terec {
+    color: #6ea6ff;
+    font-weight: bold;
+}
+
+/* Fragments styling for emphasis */
+.fragment.highlight-red,
+.highlight-red {
+    color: #ff4d4d;
+    font-weight: bold;
+}
+
+.fragment.highlight-green {
+    color: #8aff8a;
+    font-weight: bold;
+}
+
+.fragment.highlight-yellow {
+    color: #ffd966;
+    font-weight: bold;
+}
+
+/* Special Intro Slide */
+.trust-issue {
+    font-size: 1.4rem;
+    color: #ffa3a3;
+}
+
+/* QR code styling */
+img[alt="QR"] {
+    border: 2px dashed #ff4d4d;
+    padding: 6px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+}
